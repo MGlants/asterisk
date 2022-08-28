@@ -114,7 +114,7 @@ jobs:
 
           for RELEASE in "${ALPINE_RELEASES[@]}"; do
             RELEASE_VERSION="$(echo -n "${RELEASE}" | awk -F ':' '{print $NF}')"
-            IMAGE="andrius/asterisk:${RELEASE_VERSION}"
+            IMAGE="smailkoz/asterisk:${RELEASE_VERSION}"
 
             # docker run --rm -i -v "${WORKDIR}/Dockerfile.erb":/Dockerfile.erb:ro ruby:alpine \
             #   erb -U docker_baseimage="${RELEASE}" /Dockerfile.erb > "${WORKDIR}/Dockerfile-${RELEASE_VERSION}"
@@ -132,7 +132,7 @@ jobs:
               docker rm --force --volumes "${CONTAINER_NAME}"
               docker rmi --force "${IMAGE}"
 
-              TAGS="--tag andrius/asterisk:${ASTERISK_VERSION}-alpine"
+              TAGS="--tag smailkoz/asterisk:${ASTERISK_VERSION}-alpine"
               TAGS="${TAGS} --tag andrius/asterisk:${ASTERISK_VERSION}-alpine_${RELEASE_VERSION}"
               TAGS="${TAGS} --tag andrius/asterisk:${RELEASE_VERSION}-${ASTERISK_VERSION}"
               if [[ "${RELEASE_VERSION}" = "latest" || "${RELEASE_VERSION}" = "edge" ]] ; then
