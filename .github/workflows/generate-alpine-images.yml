@@ -133,10 +133,10 @@ jobs:
               docker rmi --force "${IMAGE}"
 
               TAGS="--tag smailkoz/asterisk:${ASTERISK_VERSION}-alpine"
-              TAGS="${TAGS} --tag andrius/asterisk:${ASTERISK_VERSION}-alpine_${RELEASE_VERSION}"
-              TAGS="${TAGS} --tag andrius/asterisk:${RELEASE_VERSION}-${ASTERISK_VERSION}"
+              TAGS="${TAGS} --tag smailkoz/asterisk:${ASTERISK_VERSION}-alpine_${RELEASE_VERSION}"
+              TAGS="${TAGS} --tag smailkoz/asterisk:${RELEASE_VERSION}-${ASTERISK_VERSION}"
               if [[ "${RELEASE_VERSION}" = "latest" || "${RELEASE_VERSION}" = "edge" ]] ; then
-                TAGS="${TAGS} --tag andrius/asterisk:${RELEASE_VERSION}"
+                TAGS="${TAGS} --tag smailkoz/asterisk:${RELEASE_VERSION}"
               fi
 
               docker buildx use "${BUILDER_INSTANCE}"
