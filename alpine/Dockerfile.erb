@@ -9,6 +9,7 @@ ENV LC_ALL C.UTF-8
 RUN set -e \
 && apk add --update --quiet \
          asterisk \
+         asterisk-srtp \
          asterisk-sample-config >/dev/null \
 && asterisk -U asterisk &>/dev/null \
 && sleep 5s \
